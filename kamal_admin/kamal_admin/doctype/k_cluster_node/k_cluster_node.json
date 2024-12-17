@@ -1,0 +1,153 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-12-17 09:58:31.796393",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "cluster",
+  "node_name",
+  "synced_at",
+  "column_break_cwzm",
+  "status",
+  "status_message",
+  "section_break_glta",
+  "int_ipv4",
+  "int_ipv6",
+  "column_break_fphh",
+  "ext_ipv4",
+  "ext_ipv6",
+  "section_break_heww",
+  "install_provision_types",
+  "column_break_csxj",
+  "uninstall_provision_types",
+  "variables_tab",
+  "variables"
+ ],
+ "fields": [
+  {
+   "fieldname": "node_name",
+   "fieldtype": "Data",
+   "label": "Node Name"
+  },
+  {
+   "fieldname": "section_break_glta",
+   "fieldtype": "Section Break",
+   "read_only_depends_on": "synced_at"
+  },
+  {
+   "fieldname": "int_ipv4",
+   "fieldtype": "Data",
+   "label": "Int IP Address v4"
+  },
+  {
+   "fieldname": "int_ipv6",
+   "fieldtype": "Data",
+   "label": "Int IP Address v6"
+  },
+  {
+   "fieldname": "column_break_fphh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ext_ipv4",
+   "fieldtype": "Data",
+   "label": "Ext IP Address v4"
+  },
+  {
+   "fieldname": "ext_ipv6",
+   "fieldtype": "Data",
+   "label": "Ext IP Address v6"
+  },
+  {
+   "fieldname": "section_break_heww",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "These Provision Types will be installed on upcoming sync (if not already active)",
+   "fieldname": "install_provision_types",
+   "fieldtype": "Table",
+   "label": "Install Provision Types",
+   "options": "K Cluster Node Provision Type Assignments"
+  },
+  {
+   "fieldname": "column_break_csxj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "These Provision Types will be uninstalled on upcoming sync (if not already active)",
+   "fieldname": "uninstall_provision_types",
+   "fieldtype": "Table",
+   "label": "Uninstall Provision Types",
+   "options": "K Cluster Node Provision Type Assignments"
+  },
+  {
+   "fieldname": "synced_at",
+   "fieldtype": "Datetime",
+   "label": "Synced At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_cwzm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Planned",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Planned\nSynced\nFailed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status_message",
+   "fieldtype": "Text",
+   "label": "Status Message",
+   "read_only": 1
+  },
+  {
+   "fieldname": "variables_tab",
+   "fieldtype": "Tab Break",
+   "label": "Variables"
+  },
+  {
+   "fieldname": "variables",
+   "fieldtype": "Table",
+   "label": "Variables",
+   "options": "K Cluster Node Variable"
+  },
+  {
+   "fieldname": "cluster",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Cluster",
+   "options": "K Cluster",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-17 14:32:24.441562",
+ "modified_by": "Administrator",
+ "module": "Kamal Admin",
+ "name": "K Cluster Node",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

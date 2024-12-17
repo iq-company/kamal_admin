@@ -128,6 +128,10 @@ app_license = "mit"
 # 	"Event": "frappe.desk.doctype.event.event.has_permission",
 # }
 
+fixtures = [
+  {"dt": "K Node Provision Type", "filters": [["standard", "=", 1]]},
+]
+
 # DocType Class
 # ---------------
 # Override standard doctype classes

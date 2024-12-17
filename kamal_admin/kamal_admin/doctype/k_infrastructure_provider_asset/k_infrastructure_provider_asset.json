@@ -1,0 +1,58 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-12-16 13:42:03.591374",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "description",
+  "asset_id",
+  "asset_type",
+  "asset_settings"
+ ],
+ "fields": [
+  {
+   "description": "Own Description to make the asset understandable",
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Description"
+  },
+  {
+   "description": "It's the identifier of the asset, which can be purchased (like the VPS ID e.g. CX23)",
+   "fieldname": "asset_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Asset ID"
+  },
+  {
+   "fieldname": "asset_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Asset Type",
+   "options": "VPS\nLoad Balancer\nBlock Storage"
+  },
+  {
+   "default": "{}",
+   "description": "Ability to extend the asset type by several configuration settings.",
+   "fieldname": "asset_settings",
+   "fieldtype": "JSON",
+   "label": "Asset Settings"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2024-12-16 13:52:06.635748",
+ "modified_by": "Administrator",
+ "module": "Kamal Admin",
+ "name": "K Infrastructure Provider Asset",
+ "owner": "Administrator",
+ "permissions": [],
+ "search_fields": "description, asset_id",
+ "show_title_field_in_link": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "description"
+}

@@ -1,0 +1,51 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-12-16 17:08:04.311021",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "cluster",
+  "service_name"
+ ],
+ "fields": [
+  {
+   "fieldname": "service_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Service Name"
+  },
+  {
+   "fieldname": "cluster",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Cluster",
+   "options": "K Cluster",
+   "reqd": 1
+  }
+ ],
+ "hide_toolbar": 1,
+ "links": [],
+ "modified": "2024-12-17 14:30:30.949290",
+ "modified_by": "Administrator",
+ "module": "Kamal Admin",
+ "name": "K Cluster Service",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
