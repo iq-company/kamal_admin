@@ -8,6 +8,9 @@
  "field_order": [
   "main_section",
   "service_prefix",
+  "column_break_jypi",
+  "git_repository",
+  "path_prefix",
   "nodes_tab",
   "add_node",
   "nodes_area",
@@ -61,12 +64,26 @@
   {
    "fieldname": "nodes_area",
    "fieldtype": "HTML"
+  },
+  {
+   "fieldname": "column_break_jypi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "git_repository",
+   "fieldtype": "Data",
+   "label": "Git Repository"
+  },
+  {
+   "fieldname": "path_prefix",
+   "fieldtype": "Data",
+   "label": "Path Prefix"
   }
  ],
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-12-17 16:52:34.138679",
+ "modified": "2024-12-19 14:59:45.613208",
  "modified_by": "Administrator",
  "module": "Kamal Admin",
  "name": "K Cluster",
