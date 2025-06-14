@@ -1,65 +1,68 @@
-cluster_name: cluster-name
-image: ubuntu-24.04
-datacenter: nbg1
-
-docker:
-  mtu: 1400
-
-# Netzwerke, die ggf. angelegt werden sollen
+cluster_name: clust-dev
+service_prefix: ab
+git_repository: ""
+path_prefix: ""
 networks:
-  public: # „public" reservierter Name
-    type: public # wird nicht erstellt, dient nur Referenz
-
-  backend:
+  Hetzner-001 | eu-central:
     type: private
-    create: true # falls es nicht existiert, anlegen
     ipv4_range: 10.10.0.0/16
     subnet_size: 24
-    create_subnets: 2
-    # network_zone: nbg1
-
-hosts:
-  - name_prefix: nat
-    count: 1
-    vm_type: cax11
+    network_zone: eu-central
+    infrastructure_provider: Hetzner-001
+  Public:
+    type: public
+node_pools:
+  - name_prefix: null
+    auth_groups:
+      - Internal
+      - Default
+    count: true
     public_ipv4: true
     public_ipv6: false
-    roles: [nat, bastion]
-    networks: [public, backend]
-    auth_groups: [default]
-    open_tcp: [22, 80, 443]
-
-  - name_prefix: mon
-    count: 1
-    vm_type: cax11
-    public_ipv4: false
+    vm_type: cpx21
+    image: ubuntu-24.04
+    roles:
+      - Backend
+    networks:
+      - network: Public
+        open_ports:
+          - 80
+          - 443
+        ports_opener_secret: Ports Opener
+        ports_opener_port: 44443
+        openable_ports:
+          - 22
+  - name_prefix: sowas
+    auth_groups:
+      - Internal
+      - Default
+    count: true
+    public_ipv4: true
     public_ipv6: false
-    roles: [monitoring_server]
-    networks: [backend]
-    auth_groups: [default]
-    open_tcp: [9090, 9100]
-    report_metrics_to: [monitoring_server]
-
-  - name_prefix: web
-    count: 1
-    vm_type: cax11
-    public_ipv4: false
-    public_ipv6: false
-    roles: [web]
-    networks: [backend]
-    auth_groups: [default]
-    nat_gw: nat
-    open_tcp: [80, 443]
-    report_metrics_to: [monitoring_server]
-
-  - name_prefix: db
-    count: 1
-    vm_type: cax11
-    public_ipv4: false
-    public_ipv6: false
-    roles: [db]
-    networks: [backend]
-    auth_groups: [internal]
-    nat_gw: nat
-    open_tcp: [5432]
-    report_metrics_to: [monitoring_server]
+    vm_type: cpx21
+    image: ubuntu-24.04
+    roles:
+      - Backend
+    networks:
+      - network: Public
+        open_ports:
+          - 80
+          - 443
+        ports_opener_secret: Ports Opener
+        ports_opener_port: 44443
+        openable_ports:
+          - 22
+      - network: Hetzner-001 | eu-central
+        open_ports:
+          - 80
+          - 443
+        ports_opener_secret: Ports Opener
+        ports_opener_port: 44443
+        openable_ports:
+          - 22
+hosts: []
+secrets:
+  Ports Opener:
+    secret_type: Password
+  asdf:
+    secret_type: SSH Key
