@@ -19,7 +19,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Status",
-   "options": "\nSuccess\nFail",
+   "options": "\nSuccess\nFail\nIncomplete",
    "read_only": 1,
    "reqd": 1
   },
@@ -60,7 +60,7 @@
  ],
  "in_create": 1,
  "links": [],
- "modified": "2025-06-14 15:12:23.088566",
+ "modified": "2025-06-14 15:34:58.425722",
  "modified_by": "Administrator",
  "module": "Kamal Admin",
  "name": "K Cluster Import Log",
@@ -81,5 +81,18 @@
  ],
  "sort_field": "creation",
  "sort_order": "DESC",
- "states": []
+ "states": [
+  {
+   "color": "Red",
+   "title": "Fail"
+  },
+  {
+   "color": "Green",
+   "title": "Success"
+  },
+  {
+   "color": "Orange",
+   "title": "Incomplete"
+  }
+ ]
 }

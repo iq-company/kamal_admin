@@ -33,11 +33,11 @@ class KClusterImport(Document):
 		try:
 			cluster_dict = yaml.safe_load(self.import_yaml)
 		except yaml.YAMLError as e:
-			log_doc.status = "Fail"
+			# log_doc.status = "Fail"
 			log_doc.error_log = f"YAML parsing error: {str(e)}"
 		except Exception as e:
 			frappe.log_error(f"Error importing cluster")
-			log_doc.status = "Fail"
+			# log_doc.status = "Fail"
 			log_doc.error_log = f"Unexpected error: {str(e)}"
 
 		if cluster_dict:
@@ -46,11 +46,10 @@ class KClusterImport(Document):
 			try:
 				if cluster_doc := KCluster.import_from_dict(log_doc, cluster_dict):
 					log_doc.cluster = cluster_doc.name
-					log_doc.status = "Success"
+					# log_doc.status = "Success"
 
 			except Exception as e:
 				frappe.log_error(f"Error importing cluster")
-				log_doc.status = "Fail"
 				log_doc.error_log = f"Cluster import error: {str(e)}"
 
 		log_doc.insert()

@@ -19,8 +19,24 @@ class KClusterImportLog(Document):
 		import_tried_at: DF.Datetime | None
 		import_yaml: DF.LongText
 		log: DF.LongText | None
-		status: DF.Literal["", "Success", "Fail"]
+		status: DF.Literal["", "Success", "Fail", "Incomplete"]
 	# end: auto-generated types
+
+	def before_insert(self):
+		# Set the import tried at timestamp.
+		if not self.import_tried_at:
+			self.import_tried_at = self.creation
+
+		# detect correct status
+		if self.cluster:
+			if self.error_log:
+				self.status = "Fail"
+			elif self.log:
+				self.status = "Incomplete"
+			else:
+				self.status = "Success"
+		else:
+			self.status = "Fail"
 
 	def warn(self, message: str):
 		"""Log a warning message."""
