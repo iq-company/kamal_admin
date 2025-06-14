@@ -17,7 +17,7 @@ bench install-app kamal_admin
 - [ ] Display Pools within Cluster in a Virtual Doctype (in Overview Tab)
 - [ ] Display Nodes within Cluster in a Virtual Doctype (in Overview Tab)
 - [ ] Display Scheduled Changes / States of Assets (Nodes are assets too) within Cluster in a Virtual Doctype (in Overview Tab)
-- [ ] Import Filter: error from import to Import Logs Link
+- [x] Import Filter: error from import to Import Logs Link
 - [ ] Import: Import Cluster Node Pools
 - [ ] Import: Import Cluster Nodes
 - [ ] Add Ansible Scripts for Node Worker Roles

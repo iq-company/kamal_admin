@@ -7,6 +7,7 @@
  "field_order": [
   "latest_status",
   "last_import",
+  "display_import_history_btn",
   "import_yaml",
   "import_btn"
  ],
@@ -32,18 +33,18 @@
    "fieldtype": "Datetime",
    "label": "Last Import",
    "read_only": 1
+  },
+  {
+   "depends_on": "last_import",
+   "fieldname": "display_import_history_btn",
+   "fieldtype": "Button",
+   "label": "Display Import History"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
- "links": [
-  {
-   "link_doctype": "K Cluster Import Log",
-   "link_fieldname": "status",
-   "table_fieldname": "status"
-  }
- ],
- "modified": "2025-06-14 13:20:09.005701",
+ "links": [],
+ "modified": "2025-06-14 15:48:00.710885",
  "modified_by": "Administrator",
  "module": "Kamal Admin",
  "name": "K Cluster Import",

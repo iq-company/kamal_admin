@@ -6,6 +6,10 @@ frappe.ui.form.on("K Cluster Import", {
 	// },
 	import_btn(frm) {
 		frm.call("import_btn");
+	},
+
+	display_import_history_btn(frm) {
+		frappe.set_route("List", "K Cluster Import Log", "List")
 	}
 });
 
