@@ -1,0 +1,85 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-06-11 16:37:36.703207",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "public",
+  "infrastructure_provider",
+  "title",
+  "zone_details_section",
+  "ipv4_range",
+  "subnet_size",
+  "network_zone"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "public",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Public"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title"
+  },
+  {
+   "depends_on": "eval: !doc.public",
+   "fieldname": "zone_details_section",
+   "fieldtype": "Section Break",
+   "label": "Zone Details"
+  },
+  {
+   "default": "10.10.0.0/16",
+   "fieldname": "ipv4_range",
+   "fieldtype": "Data",
+   "label": "IPv4 Range",
+   "mandatory_depends_on": "eval: !doc.public"
+  },
+  {
+   "default": "24",
+   "fieldname": "subnet_size",
+   "fieldtype": "Int",
+   "label": "Subnet Size",
+   "length": 3,
+   "mandatory_depends_on": "eval: !doc.public"
+  },
+  {
+   "fieldname": "network_zone",
+   "fieldtype": "Link",
+   "label": "Network Zone",
+   "mandatory_depends_on": "eval: !doc.public",
+   "options": "K Infrastructure Provider Network Zone"
+  },
+  {
+   "depends_on": "eval: !doc.public",
+   "fieldname": "infrastructure_provider",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Infrastructure Provider",
+   "mandatory_depends_on": "eval: !doc.public",
+   "options": "K Infrastructure Provider",
+   "set_only_once": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-06-12 11:37:25.839166",
+ "modified_by": "Administrator",
+ "module": "Kamal Admin",
+ "name": "K Cluster Network",
+ "owner": "Administrator",
+ "permissions": [],
+ "search_fields": "title",
+ "show_title_field_in_link": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title",
+ "translated_doctype": 1
+}

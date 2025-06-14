@@ -1,0 +1,64 @@
+cluster_name: clust-dev
+image: ubuntu-24.04
+datacenter: nbg1
+
+docker:
+  mtu: 1400 # TODO
+
+# Netzwerke, die ggf. angelegt werden sollen
+networks:
+  public: # „public" reservierter Name
+    type: public # wird nicht erstellt, dient nur Referenz
+
+  backend:
+    type: private
+    create: true # falls es nicht existiert, anlegen
+    ipv4_range: 10.10.0.0/16
+    subnet_size: 24
+    network_zone: eu-central
+
+hosts:
+  - name_prefix: nat
+    count: 1
+    vm_type: cpx11
+    public_ipv4: true
+    public_ipv6: false
+    roles: [nat, bastion]
+    networks: [public, backend]
+    auth_groups: [default]
+    open_tcp: [22, 80, 443]
+
+  - name_prefix: mon
+    count: 1
+    vm_type: cpx11
+    public_ipv4: false
+    public_ipv6: false
+    roles: [monitoring_server]
+    networks: [backend]
+    auth_groups: [default]
+    open_tcp: [9090, 9100]
+    report_metrics_to: [monitoring_server]
+
+  - name_prefix: web
+    count: 4
+    vm_type: cpx21
+    public_ipv4: false
+    public_ipv6: false
+    roles: [web]
+    networks: [backend]
+    auth_groups: [default]
+    nat_gw: nat
+    open_tcp: [80, 443]
+    report_metrics_to: [monitoring_server]
+
+  - name_prefix: db
+    count: 2
+    vm_type: cpx31
+    public_ipv4: false
+    public_ipv6: false
+    roles: [db]
+    networks: [backend]
+    auth_groups: [internal]
+    nat_gw: nat
+    open_tcp: [5432]
+    report_metrics_to: [monitoring_server]

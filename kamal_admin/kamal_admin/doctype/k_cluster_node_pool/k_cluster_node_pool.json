@@ -1,0 +1,162 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{cluster}_{title}",
+ "creation": "2025-06-11 12:54:29.119438",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "cluster",
+  "infrastructure_provider",
+  "node_definition",
+  "name_prefix",
+  "count",
+  "count_max",
+  "column_break_iobw",
+  "public_ipv4",
+  "public_ipv6",
+  "node_roles",
+  "auth_groups",
+  "report_metrics_to",
+  "nat_gateway_role",
+  "cluster_networks"
+ ],
+ "fields": [
+  {
+   "fieldname": "cluster",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Cluster",
+   "options": "K Cluster",
+   "reqd": 1,
+   "search_index": 1,
+   "set_only_once": 1
+  },
+  {
+   "description": "Name/Title of this Node Pool",
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "description": "Defines a prefix for the spawned nodes like \"db\", \"app\", \"web\", ...",
+   "fieldname": "name_prefix",
+   "fieldtype": "Data",
+   "label": "Name Prefix"
+  },
+  {
+   "default": "1",
+   "description": "Defines the Initial Count of Nodes to be created. ",
+   "fieldname": "count",
+   "fieldtype": "Int",
+   "label": "Count",
+   "reqd": 1
+  },
+  {
+   "fieldname": "count_max",
+   "fieldtype": "Int",
+   "label": "Count Max",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_iobw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "public_ipv4",
+   "fieldtype": "Check",
+   "label": "Public IPv4"
+  },
+  {
+   "default": "0",
+   "fieldname": "public_ipv6",
+   "fieldtype": "Check",
+   "label": "Public IPv6"
+  },
+  {
+   "depends_on": "cluster",
+   "fieldname": "node_roles",
+   "fieldtype": "Table MultiSelect",
+   "label": "Node Roles",
+   "options": "K Role Assignment",
+   "reqd": 1
+  },
+  {
+   "fieldname": "infrastructure_provider",
+   "fieldtype": "Link",
+   "label": "Infrastructure Provider",
+   "options": "K Infrastructure Provider",
+   "reqd": 1,
+   "search_index": 1,
+   "set_only_once": 1
+  },
+  {
+   "depends_on": "cluster",
+   "fieldname": "report_metrics_to",
+   "fieldtype": "Table MultiSelect",
+   "label": "Report Metrics To",
+   "options": "K Role Assignment"
+  },
+  {
+   "depends_on": "eval: doc.cluster",
+   "fieldname": "cluster_networks",
+   "fieldtype": "Table",
+   "label": "Cluster Networks",
+   "options": "K Cluster Node Network Assignments",
+   "reqd": 1
+  },
+  {
+   "fieldname": "auth_groups",
+   "fieldtype": "Table MultiSelect",
+   "label": "Auth Groups",
+   "options": "K Auth Group Assignments"
+  },
+  {
+   "depends_on": "cluster",
+   "fieldname": "node_definition",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Node Definition",
+   "options": "K Infrastructure Provider Node Def",
+   "read_only_depends_on": "eval: !doc.infrastructure_provider",
+   "reqd": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "nat_gateway_role",
+   "fieldtype": "Link",
+   "label": "NAT Gateway Role",
+   "options": "K Node Role"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-06-14 11:50:23.271690",
+ "modified_by": "Administrator",
+ "module": "Kamal Admin",
+ "name": "K Cluster Node Pool",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title"
+}

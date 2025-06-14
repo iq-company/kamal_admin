@@ -1,0 +1,31 @@
+- name: Stelle sicher, dass der 'ansible'-Benutzer existiert
+  user:
+    name: ansible
+    groups: wheel
+    shell: /bin/bash
+    create_home: yes
+
+- name: Kopiere eigenes SSH‑Public‑Key auf den Host
+  authorized_key:
+    user: ansible
+    state: present
+    key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+
+- name: Passwortlosen sudo‑Zugriff für 'ansible' gewähren
+  copy:
+    dest: /etc/sudoers.d/90-ansible
+    content: "ansible ALL=(ALL) NOPASSWD: ALL\n"
+    mode: "0440"
+
+- name: Deaktiviere direkten Root‑SSH‑Login
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^PermitRootLogin"
+    line: "PermitRootLogin prohibit-password"
+  notify: Restart SSH
+
+- name: SSH neu starten
+  service:
+    name: sshd
+    state: restarted
+  when: false # Handler‑Art, aber einfacher hier

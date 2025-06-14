@@ -1,0 +1,85 @@
+{
+ "actions": [],
+ "allow_copy": 1,
+ "allow_rename": 1,
+ "creation": "2025-06-14 13:10:18.409001",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "cluster",
+  "status",
+  "import_tried_at",
+  "import_yaml",
+  "log",
+  "error_log"
+ ],
+ "fields": [
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "\nSuccess\nFail",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "import_tried_at",
+   "fieldtype": "Datetime",
+   "label": "Import Tried At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "import_yaml",
+   "fieldtype": "Long Text",
+   "in_list_view": 1,
+   "label": "Import YAML",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "error_log",
+   "fieldtype": "Long Text",
+   "label": "Error Log",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cluster",
+   "fieldtype": "Link",
+   "label": "Cluster",
+   "options": "K Cluster",
+   "read_only": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "log",
+   "fieldtype": "Long Text",
+   "label": "Log",
+   "read_only": 1
+  }
+ ],
+ "in_create": 1,
+ "links": [],
+ "modified": "2025-06-14 15:12:23.088566",
+ "modified_by": "Administrator",
+ "module": "Kamal Admin",
+ "name": "K Cluster Import Log",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

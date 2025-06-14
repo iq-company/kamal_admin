@@ -1,0 +1,15 @@
+- name: Enable IP forwarding
+  sysctl:
+    name: net.ipv4.ip_forward
+    value: "1"
+    state: present
+    reload: yes
+
+- name: NAT Masquerade backend -> public
+  nftables:
+    table: ip
+    chain: nat
+    family: ip
+    hook: postrouting
+    type: nat
+    rule: oifname {{ ansible_default_ipv4.interface }} masquerade

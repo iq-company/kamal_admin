@@ -1,0 +1,58 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "prompt",
+ "creation": "2025-06-11 14:05:03.596895",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "standard",
+  "native_function",
+  "description"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "description": "Will be marked as deployable Fixture if checked.",
+   "fieldname": "standard",
+   "fieldtype": "Check",
+   "label": "Standard Fixture"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "native_function",
+   "fieldtype": "Select",
+   "label": "Native Function",
+   "options": "NAT\nBastion\nMonitoring Receiver"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-06-12 11:20:12.523866",
+ "modified_by": "Administrator",
+ "module": "Kamal Admin",
+ "name": "K Node Role",
+ "naming_rule": "Set by user",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

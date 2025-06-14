@@ -1,0 +1,19 @@
+plugin: hetzner.hcloud.hcloud
+# API‑Token wird per HCLOUD_TOKEN‑Env‑Var übergeben
+compose:
+  ansible_host: >-
+    {{ public_net.ipv4.ip | default(private_net[0].ip) }}
+  ansible_user: ansible
+  open_tcp: "{{ labels.open_tcp | default(') }}"
+  auth_groups: "{{ labels.auth_groups | default(') }}"
+  report_metrics_to: "{{ labels.report_metrics_to | default(') }}"
+
+keyed_groups:
+  - prefix: role
+    key: labels
+
+host_variables:
+  ansible_ssh_common_args: |
+    {%- if public_net.ipv4 is not defined and groups['role_bastion'] | length > 0 -%}
+    -o ProxyJump={{ (groups['role_bastion'] | first) }}
+    {%- endif -%}

@@ -6,15 +6,17 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "main_section",
   "service_prefix",
   "column_break_jypi",
   "git_repository",
   "path_prefix",
+  "network_section",
+  "network_zones",
   "nodes_tab",
-  "add_node",
-  "nodes_area",
-  "services_tab",
+  "generate_cluster_yml",
+  "generated_code",
   "secrets_tab",
   "secrets_section",
   "secrets"
@@ -34,17 +36,13 @@
   {
    "fieldname": "nodes_tab",
    "fieldtype": "Tab Break",
-   "label": "Nodes"
-  },
-  {
-   "fieldname": "services_tab",
-   "fieldtype": "Tab Break",
-   "label": "Services"
+   "label": "Overview",
+   "show_dashboard": 1
   },
   {
    "fieldname": "secrets_tab",
    "fieldtype": "Tab Break",
-   "label": "Globals"
+   "label": "Variables"
   },
   {
    "fieldname": "secrets",
@@ -55,15 +53,6 @@
    "fieldname": "secrets_section",
    "fieldtype": "Section Break",
    "label": "Secrets"
-  },
-  {
-   "fieldname": "add_node",
-   "fieldtype": "Button",
-   "label": "Add Node"
-  },
-  {
-   "fieldname": "nodes_area",
-   "fieldtype": "HTML"
   },
   {
    "fieldname": "column_break_jypi",
@@ -78,12 +67,62 @@
    "fieldname": "path_prefix",
    "fieldtype": "Data",
    "label": "Path Prefix"
+  },
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "network_section",
+   "fieldtype": "Section Break",
+   "label": "Network"
+  },
+  {
+   "fieldname": "network_zones",
+   "fieldtype": "Table",
+   "label": "Network Zones",
+   "options": "K Cluster Network"
+  },
+  {
+   "default": "sdf",
+   "depends_on": "generated_code",
+   "fieldname": "generated_code",
+   "fieldtype": "Code",
+   "is_virtual": 1,
+   "label": "Generated Code",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval: !doc.__islocal",
+   "fieldname": "generate_cluster_yml",
+   "fieldtype": "Button",
+   "label": "Generate Cluster YML"
   }
  ],
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2024-12-19 14:59:45.613208",
+ "links": [
+  {
+   "group": "Settings",
+   "link_doctype": "K Infrastructure Login",
+   "link_fieldname": "cluster",
+   "table_fieldname": "cluster"
+  },
+  {
+   "group": "Settings",
+   "link_doctype": "K Cluster Node Pool",
+   "link_fieldname": "cluster",
+   "table_fieldname": "cluster"
+  },
+  {
+   "group": "Generated",
+   "link_doctype": "K Cluster Node",
+   "link_fieldname": "cluster",
+   "table_fieldname": "cluster"
+  }
+ ],
+ "modified": "2025-06-14 13:04:04.516379",
  "modified_by": "Administrator",
  "module": "Kamal Admin",
  "name": "K Cluster",

@@ -1,0 +1,21 @@
+- name: Install Docker
+  package:
+    name: docker
+    state: present
+
+- name: Configure Docker daemon MTU
+  template:
+    src: daemon.json.j2
+    dest: /etc/docker/daemon.json
+  notify: restart docker
+
+- name: Start Docker
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: restart docker
+  service:
+    name: docker
+    state: restarted

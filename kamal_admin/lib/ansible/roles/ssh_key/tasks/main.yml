@@ -1,0 +1,34 @@
+- name: generate cluster key (once)
+  openssh_keypair:
+    path: /etc/ssh/kdep_cluster
+    owner: ansible
+    group: ansible
+    type: ed25519
+    comment: "{{ inventory_hostname }}"
+  register: keypair
+  when: keypair.stat.exists is not defined
+
+- name: push public key to etcd
+  community.general.etcd_kv:
+    key: "/{{ cluster_name }}/ssh/{{ inventory_hostname }}"
+    value: "{{ lookup('file', '/etc/ssh/kdep_cluster.pub') }}"
+  delegate_to: "{{ groups['role_nat'][0] }}" # ein Host mit externem Netz
+  run_once: true
+
+- name: collect keys of my auth_groups
+  set_fact:
+    trusted_keys: >-
+      {{
+        query('community.general.etcd_kv', prefix='/{{ cluster_name }}/ssh/')
+        | items2dict(key_name='key', value_name='value')
+        | dict2items
+        | selectattr('key', 'match', auth_groups | join('|'))
+        | map(attribute='value')
+        | list
+      }}
+
+- name: install trusted keys
+  authorized_key:
+    user: ansible
+    key: "{{ item }}"
+  loop: "{{ trusted_keys }}"

@@ -130,6 +130,9 @@ app_license = "mit"
 
 fixtures = [
   {"dt": "K Node Provision Type", "filters": [["standard", "=", 1]]},
+  {"dt": "K Infrastructure Provider" }, # "filters": [["standard", "=", 1]]},
+  {"dt": "K Node Role" },
+  {"dt": "K Node Auth Group" },
 ]
 
 # DocType Class
@@ -243,7 +246,7 @@ fixtures = [
 # ]
 
 # Automatically update python controller files with type annotations for this app.
-# export_python_type_annotations = True
+export_python_type_annotations = True
 
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs

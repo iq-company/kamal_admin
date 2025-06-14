@@ -1,14 +1,16 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:{driver}-{00}",
  "creation": "2024-12-16 11:01:50.319894",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "driver",
-  "api_secret",
   "regions",
-  "assets"
+  "assets",
+  "node_definitions",
+  "network_zones"
  ],
  "fields": [
   {
@@ -20,11 +22,6 @@
    "reqd": 1
   },
   {
-   "fieldname": "api_secret",
-   "fieldtype": "Password",
-   "label": "API Secret"
-  },
-  {
    "fieldname": "assets",
    "fieldtype": "Table",
    "label": "Assets",
@@ -33,16 +30,40 @@
   {
    "fieldname": "regions",
    "fieldtype": "Table",
-   "label": "Regions",
+   "label": "Regions / Datacenters",
    "options": "K Infrastructure Provider Region"
+  },
+  {
+   "fieldname": "network_zones",
+   "fieldtype": "Table",
+   "label": "Internal Network Zones",
+   "options": "K Infrastructure Provider Network Zone"
+  },
+  {
+   "fieldname": "node_definitions",
+   "fieldtype": "Table",
+   "label": "Node+OS Definitions",
+   "options": "K Infrastructure Provider Node Def"
   }
  ],
  "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2024-12-17 14:27:07.151374",
+ "links": [
+  {
+   "link_doctype": "K Cluster Node Pool",
+   "link_fieldname": "infrastructure_provider",
+   "table_fieldname": "infrastructure_provider"
+  },
+  {
+   "link_doctype": "K Infrastructure Login",
+   "link_fieldname": "infrastructure_provider",
+   "table_fieldname": "infrastructure_provider"
+  }
+ ],
+ "modified": "2025-06-14 11:32:57.030393",
  "modified_by": "Administrator",
  "module": "Kamal Admin",
  "name": "K Infrastructure Provider",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

@@ -29,15 +29,16 @@
   },
   {
    "default": "0",
+   "description": "Will be marked as deployable Fixture if checked.",
    "fieldname": "standard",
    "fieldtype": "Check",
-   "label": "Standard"
+   "label": "Standard Fixture"
   }
  ],
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-12-17 13:42:24.946104",
+ "modified": "2025-06-11 12:47:25.622051",
  "modified_by": "Administrator",
  "module": "Kamal Admin",
  "name": "K Cluster Node Provision Type",

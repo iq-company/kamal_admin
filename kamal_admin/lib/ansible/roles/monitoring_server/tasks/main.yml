@@ -1,0 +1,21 @@
+- name: Install Prometheus
+  package:
+    name: prometheus
+    state: present
+
+- name: Deploy Prometheus config with scrape targets
+  template:
+    src: prometheus.yml.j2
+    dest: /etc/prometheus/prometheus.yml
+  notify: restart prometheus
+
+- name: Enable & start Prometheus
+  service:
+    name: prometheus
+    state: started
+    enabled: yes
+
+- name: restart prometheus
+  service:
+    name: prometheus
+    state: restarted

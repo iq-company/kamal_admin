@@ -1,0 +1,26 @@
+- hosts: all
+  gather_facts: true
+  vars_files:
+    - "{{ playbook_dir }}/../cluster.yml"
+  # → dynamisch role_<X> Gruppen aus Label-Keys erstellen
+  tasks:
+    - name: Erstelle Gruppen für jede role_* Label
+      group_by:
+        key: "{{ item.key }}"
+      loop: "{{ hostvars[inventory_hostname].labels | dict2items }}"
+      when: item.key.startswith('role_')
+  roles:
+    - bootstrap
+    - ssh_key
+    - firewall
+    - role: nat_gateway
+      when: "'nat' in group_names"
+    - docker
+    - monitoring_agent
+
+- hosts: role_monitoring_server
+  gather_facts: true
+  vars_files:
+    - "{{ playbook_dir }}/../cluster.yml"
+  roles:
+    - monitoring_server

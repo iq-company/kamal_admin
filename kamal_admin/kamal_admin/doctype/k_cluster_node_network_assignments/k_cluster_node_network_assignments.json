@@ -1,0 +1,83 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-06-12 11:28:34.065548",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "cluster_network",
+  "open_ports",
+  "hide_ports_behind_ports_opener",
+  "section_break_xwqt",
+  "ports_opener_port",
+  "openable_ports",
+  "ports_opener_secret"
+ ],
+ "fields": [
+  {
+   "fieldname": "cluster_network",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Cluster Network",
+   "options": "K Cluster Network",
+   "reqd": 1,
+   "set_only_once": 1
+  },
+  {
+   "default": "80, 443",
+   "description": "Comma separated list of ports, which should be opened. * to keep all ports open",
+   "fieldname": "open_ports",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Open Ports"
+  },
+  {
+   "default": "0",
+   "fieldname": "hide_ports_behind_ports_opener",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Hide Ports behind Ports Opener"
+  },
+  {
+   "depends_on": "hide_ports_behind_ports_opener",
+   "fieldname": "section_break_xwqt",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "44443",
+   "depends_on": "hide_ports_behind_ports_opener",
+   "fieldname": "ports_opener_port",
+   "fieldtype": "Int",
+   "label": "Ports Opener Port",
+   "mandatory_depends_on": "hide_ports_behind_ports_opener"
+  },
+  {
+   "fieldname": "ports_opener_secret",
+   "fieldtype": "Link",
+   "label": "Ports Opener Secret",
+   "mandatory_depends_on": "hide_ports_behind_ports_opener",
+   "options": "K Cluster Secret"
+  },
+  {
+   "default": "22",
+   "depends_on": "hide_ports_behind_ports_opener",
+   "description": "Comma separated list of Ports, which will be opened by Ports Opener",
+   "fieldname": "openable_ports",
+   "fieldtype": "Data",
+   "label": "Openable Ports",
+   "mandatory_depends_on": "hide_ports_behind_ports_opener"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-06-14 12:25:39.478992",
+ "modified_by": "Administrator",
+ "module": "Kamal Admin",
+ "name": "K Cluster Node Network Assignments",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,66 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-06-14 13:08:57.865986",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "latest_status",
+  "last_import",
+  "import_yaml",
+  "import_btn"
+ ],
+ "fields": [
+  {
+   "fieldname": "import_yaml",
+   "fieldtype": "Long Text",
+   "label": "Import YAML"
+  },
+  {
+   "fieldname": "import_btn",
+   "fieldtype": "Button",
+   "label": "Import"
+  },
+  {
+   "fieldname": "latest_status",
+   "fieldtype": "Data",
+   "label": "Latest Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_import",
+   "fieldtype": "Datetime",
+   "label": "Last Import",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [
+  {
+   "link_doctype": "K Cluster Import Log",
+   "link_fieldname": "status",
+   "table_fieldname": "status"
+  }
+ ],
+ "modified": "2025-06-14 13:20:09.005701",
+ "modified_by": "Administrator",
+ "module": "Kamal Admin",
+ "name": "K Cluster Import",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -6,6 +6,7 @@
  "engine": "InnoDB",
  "field_order": [
   "cluster",
+  "ext_id",
   "node_name",
   "synced_at",
   "column_break_cwzm",
@@ -124,11 +125,19 @@
    "label": "Cluster",
    "options": "K Cluster",
    "reqd": 1
+  },
+  {
+   "fieldname": "ext_id",
+   "fieldtype": "Data",
+   "label": "Ext-ID",
+   "no_copy": 1,
+   "read_only": 1,
+   "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-12-17 14:32:24.441562",
+ "modified": "2025-06-13 22:57:58.609224",
  "modified_by": "Administrator",
  "module": "Kamal Admin",
  "name": "K Cluster Node",

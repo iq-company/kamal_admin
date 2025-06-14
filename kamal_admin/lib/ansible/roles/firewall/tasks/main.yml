@@ -1,0 +1,26 @@
+- name: Install nftables
+  package:
+    name: nftables
+    state: present
+
+- name: Flush existing rules
+  nftables:
+    table: inet
+    flush: true
+
+- name: Open requested TCP ports
+  nftables:
+    table: inet
+    chain: filter
+    protocol: tcp
+    action: accept
+    dport: "{{ item }}"
+  loop: "{{ hostvars[inventory_hostname].open_tcp | default([]) }}"
+  when: hostvars[inventory_hostname].open_tcp | default([])
+
+- name: Allow established/related
+  nftables:
+    table: inet
+    chain: filter
+    ct_state: [established, related]
+    action: accept

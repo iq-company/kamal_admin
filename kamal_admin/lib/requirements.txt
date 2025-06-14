@@ -1,0 +1,5 @@
+typer>=0.9
+ansible>=9.0
+etcd3
+hcloud
+hetzner.hcloud
